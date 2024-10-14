@@ -9,6 +9,9 @@ from sklearn.metrics import accuracy_score
 url = 'https://drive.google.com/uc?id=1wrXr_3skydYti-u7Hesxg3OhLuJ1fBPq'
 credit_card_data = pd.read_csv(url)
 
+# Check and display the columns in the dataset
+st.write("Dataset Columns:", credit_card_data.columns.tolist())
+
 # Check if the 'Class' column exists
 if 'Class' not in credit_card_data.columns:
     st.error("The dataset does not contain a 'Class' column.")
