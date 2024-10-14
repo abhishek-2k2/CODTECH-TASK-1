@@ -7,8 +7,9 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
 
-# Load the dataset
-credit_card_data = pd.read_csv('credit_data.csv')
+# Load the dataset from Google Drive
+url = 'https://drive.google.com/uc?id=1wrXr_3skydYti-u7Hesxg3OhLuJ1fBPq'
+credit_card_data = pd.read_csv(url)
 
 # Preprocessing
 legit = credit_card_data[credit_card_data.Class == 0]
