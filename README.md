@@ -2,9 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-  
 </head>
 <body>
+
+<!-- Project Information -->
+<section>
+    <h2>Project Information</h2>
+    <p><strong>Name:</strong> Abhishek Chauhan</p>
+    <p><strong>Company:</strong> Codtech IT Solutions</p>
+    <p><strong>ID:</strong> CT6WDS1850</p>
+    <p><strong>Domain:</strong> Machine Learning</p>
+    <p><strong>Duration:</strong> September 5, 2024 to October 20, 2024</p>
+</section>
 
 <h1>Credit Card Fraud Detection</h1>
 <p>This project aims to detect fraudulent credit card transactions using machine learning techniques. The dataset used for this project can be found <a href="https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud" download>here</a>.</p>
@@ -17,7 +26,6 @@
     <li><a href="#usage">Usage</a></li>
     <li><a href="#results">Results</a></li>
     <li><a href="#contributing">Contributing</a></li>
-  
 </ul>
 
 <h2 id="introduction">Introduction</h2>
@@ -77,8 +85,6 @@ print('Accuracy score on Test Data:', test_data_accuracy)
 
 <h2 id="contributing">Contributing</h2>
 <p>Contributions are welcome! Please feel free to submit a Pull Request.</p>
-
-
 
 </body>
 </html>
