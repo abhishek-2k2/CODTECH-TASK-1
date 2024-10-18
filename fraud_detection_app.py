@@ -24,6 +24,15 @@ else:
     legit_sample = legit.sample(n=492, random_state=42)  # Set random_state for reproducibility
     new_dataset = pd.concat([legit_sample, fraud], axis=0)
 
+    # Provide the option to download the preprocessed dataset
+    csv_data = new_dataset.to_csv(index=False)
+    st.download_button(
+        label="Download Preprocessed Dataset as CSV",
+        data=csv_data,
+        file_name='preprocessed_creditcard_fraud.csv',
+        mime='text/csv'
+    )
+
     # Define features and target
     X = new_dataset.drop(columns='Class', axis=1)
     Y = new_dataset['Class']
