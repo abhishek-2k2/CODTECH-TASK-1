@@ -5,8 +5,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
 
-# Load the dataset from Google Drive
-url = 'https://drive.google.com/uc?id=1wrXr_3skydYti-u7Hesxg3OhLuJ1fBPq'
+# Load the dataset from Dropbox
+url = 'https://www.dropbox.com/scl/fi/3cy5fcg1v7ns4qgjfynoj/creditcard.csv?rlkey=39zyj3wrrojcyvlve3z0n5f5z&dl=1'  # Change to dl=1 for direct download
 credit_card_data = pd.read_csv(url)
 
 # Check and display the columns in the dataset
