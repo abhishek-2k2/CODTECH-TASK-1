@@ -1,4 +1,3 @@
-import numpy as np
 import pandas as pd
 import streamlit as st
 from sklearn.model_selection import train_test_split
@@ -9,12 +8,11 @@ from joblib import dump, load
 st.title("Credit Card Fraud Detection")
 
 # Load the dataset from GitHub
-url = 'https://raw.githubusercontent.com/abhishek-2k2/CODTECH-TASK-1/main/creditcard.csv'  # Updated URL
-try:
-    credit_card_data = pd.read_csv(url)
-    st.write("Dataset Columns:", credit_card_data.columns.tolist())
-except Exception as e:
-    st.error(f"Error loading the dataset: {e}")
+url = 'https://raw.githubusercontent.com/abhishek-2k2/CODTECH-TASK-1/main/creditcard.csv'  # Updated GitHub URL
+credit_card_data = pd.read_csv(url)
+
+# Check and display the columns in the dataset
+st.write("Dataset Columns:", credit_card_data.columns.tolist())
 
 # Check if the 'Class' column exists
 if 'Class' not in credit_card_data.columns:
@@ -23,7 +21,7 @@ else:
     # Preprocessing
     legit = credit_card_data[credit_card_data.Class == 0]
     fraud = credit_card_data[credit_card_data.Class == 1]
-
+    
     # Sample the legitimate transactions for balance
     legit_sample = legit.sample(n=492, random_state=42)  # Set random_state for reproducibility
     new_dataset = pd.concat([legit_sample, fraud], axis=0)
@@ -58,7 +56,7 @@ else:
 
     if uploaded_file is not None:
         user_data = pd.read_csv(uploaded_file)
-
+        
         # Check if the uploaded dataset has the same columns as the model's training dataset
         if 'Class' in user_data.columns:
             user_data.drop(columns='Class', axis=1, inplace=True)  # Remove Class column if exists
