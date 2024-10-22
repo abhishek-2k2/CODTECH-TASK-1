@@ -2,9 +2,11 @@ import pandas as pd
 import streamlit as st
 from sklearn.linear_model import LogisticRegression
 from joblib import load
+import matplotlib.pyplot as plt
 
 # Streamlit user interface
-st.title("Credit Card Fraud Detection")
+st.set_page_config(page_title="Credit Card Fraud Detection", layout="wide")
+st.title("Credit Card Fraud Detection App")
 
 # Explanation of the app
 st.sidebar.header("How It Works")
@@ -22,35 +24,57 @@ if uploaded_file is not None:
     credit_card_data = pd.read_csv(uploaded_file)
     st.success("Dataset loaded successfully!")
 
-    # Check if the necessary columns are in the dataset
-    # You can define the feature columns based on the dataset used for training
-    feature_columns = credit_card_data.columns.drop('Class', errors='ignore')  # Exclude 'Class' if it exists
+    # Display basic information about the dataset
+    st.subheader("Dataset Overview")
+    st.write(credit_card_data.head())
+    st.write(f"Total Transactions: {len(credit_card_data)}")
 
-    # Preprocessing
-    legit = credit_card_data[credit_card_data.Class == 0] if 'Class' in credit_card_data.columns else credit_card_data
-    fraud = credit_card_data[credit_card_data.Class == 1] if 'Class' in credit_card_data.columns else pd.DataFrame()
+    # Preprocessing to count legitimate and fraudulent transactions
+    if 'Class' in credit_card_data.columns:
+        legit = credit_card_data[credit_card_data.Class == 0]
+        fraud = credit_card_data[credit_card_data.Class == 1]
+    else:
+        legit = credit_card_data
+        fraud = pd.DataFrame()
 
-    # Count legitimate and fraudulent transactions
     count_legit = legit.shape[0]
     count_fraud = fraud.shape[0]
 
-    # Display results
+    # Display the counts
     st.write(f"**Total Legitimate Transactions:** {count_legit}")
     st.write(f"**Total Fraudulent Transactions:** {count_fraud}")
+
+    # Visualization
+    st.subheader("Transaction Distribution")
+    labels = ['Legitimate', 'Fraudulent']
+    sizes = [count_legit, count_fraud]
+    colors = ['#4CAF50', '#FF5733']
+
+    fig, ax = plt.subplots()
+    ax.pie(sizes, labels=labels, colors=colors, autopct='%1.1f%%', startangle=90)
+    ax.axis('equal')  # Equal aspect ratio ensures that pie chart is circular.
+    st.pyplot(fig)
 
     # Load the pre-trained model
     model = load('logistic_regression_model.joblib')
 
     # Make predictions on the relevant features
+    feature_columns = credit_card_data.columns.drop('Class', errors='ignore')  # Exclude 'Class' if it exists
     user_data = credit_card_data[feature_columns]
     predictions = model.predict(user_data)
 
     # Add predictions to the dataframe
     credit_card_data['Prediction'] = ["Fraud" if pred == 1 else "Legitimate" for pred in predictions]
 
-    # Optionally show the updated dataframe with predictions
-    st.write("Prediction Results:")
-    st.dataframe(credit_card_data)
+    # Show prediction results in a table
+    st.subheader("Prediction Results")
+    result_df = credit_card_data[['Prediction']].copy()
+    st.dataframe(result_df)
+
+    # Count the predictions
+    prediction_count = result_df['Prediction'].value_counts()
+    st.write(f"**Predicted Legitimate Transactions:** {prediction_count.get('Legitimate', 0)}")
+    st.write(f"**Predicted Fraudulent Transactions:** {prediction_count.get('Fraud', 0)}")
 
 else:
     st.error("Please upload a dataset to proceed.")
