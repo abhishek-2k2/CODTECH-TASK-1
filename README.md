@@ -44,7 +44,7 @@ pip install -r requirements.txt
 </code></pre>
 
 <h2 id="results">Results</h2>
-<p>The Logistic Regression model achieved an accuracy score of <code>test_data_accuracy</code> on the test dataset. This result demonstrates the model's effectiveness in distinguishing between legitimate and fraudulent credit card transactions.</p>
+<p>The Logistic Regression model achieved an accuracy score of <code>93%</code> on the test dataset. This result demonstrates the model's effectiveness in distinguishing between legitimate and fraudulent credit card transactions.</p>
 
 <h2 id="contributing">Contributing</h2>
 <p>Contributions are welcome! If you would like to contribute to this project, feel free to submit a Pull Request.</p>
