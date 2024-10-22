@@ -4,13 +4,12 @@ import streamlit as st
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from joblib import dump, load
-import os
 
 # Streamlit user interface
 st.title("Credit Card Fraud Detection")
 
-# Load the dataset from Dropbox
-url = 'https://www.dropbox.com/scl/fi/3cy5fcg1v7ns4qgjfynoj/creditcard.csv?rlkey=39zyj3wrrojcyvlve3z0n5f5z&st=l35rywuw&dl=0'
+# Load the dataset from GitHub
+url = 'https://raw.githubusercontent.com/abhishek-2k2/CODTECH-TASK-1/main/creditcard.csv'  # Updated URL
 try:
     credit_card_data = pd.read_csv(url)
     st.write("Dataset Columns:", credit_card_data.columns.tolist())
