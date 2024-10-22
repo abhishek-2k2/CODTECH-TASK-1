@@ -3,53 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
+    
 </head>
 <body>
 
 <h1>Credit Card Fraud Detection</h1>
-<p>This project aims to detect fraudulent credit card transactions using machine learning techniques, particularly Logistic Regression. It demonstrates data preprocessing, model training, and evaluation using a highly imbalanced dataset.</p>
+<p>This project involves building a machine learning model to detect fraudulent credit card transactions. The classifier is designed to predict whether a transaction is fraudulent or legitimate based on historical transaction data. The project utilizes data preprocessing techniques, a Logistic Regression model, and a label encoder for this task.</p>
 
-<h2>Project Information</h2>
+<h2>Features</h2>
 <ul>
-    <li><strong>Author:</strong> Abhishek Chauhan</li>
-    <li><strong>Company:</strong> Codtech IT Solutions</li>
-    <li><strong>ID:</strong> CT6WDS1850</li>
-    <li><strong>Domain:</strong> Machine Learning</li>
-    <li><strong>Duration:</strong> September 5, 2024 – October 20, 2024</li>
+    <li><strong>Fraud Detection:</strong> Predicts whether a given credit card transaction is fraudulent or legitimate.</li>
+    <li><strong>Machine Learning Model:</strong> A Logistic Regression model trained on a highly imbalanced dataset to achieve high accuracy in detecting frauds.</li>
+    <li><strong>User-Friendly Interface:</strong> A web application built with Streamlit that allows users to input transaction data and receive fraud detection results in real-time.</li>
+    <li><strong>Data Handling:</strong> Efficient data preprocessing and balancing techniques applied to the imbalanced dataset for better model performance.</li>
 </ul>
 
-<h2>Table of Contents</h2>
+<h2>Project Components</h2>
+
+<h3>Data Preprocessing</h3>
+<p>The dataset used is highly imbalanced, with only 0.172% of the transactions classified as fraud. To address this, the project implements data sampling techniques such as undersampling to balance the dataset and improve the model's performance.</p>
+
+<h3>Feature Extraction</h3>
+<p>Extracted key features from the transaction data such as transaction amount, time, and other behavioral characteristics. These features are used as inputs to the machine learning model to detect fraudulent patterns in the transactions.</p>
+
+<h3>Model Training and Comparison</h3>
 <ul>
-    <li><a href="#introduction">Introduction</a></li>
-    <li><a href="#dataset">Dataset</a></li>
-    <li><a href="#installation">Installation</a></li>
-    <li><a href="#results">Results</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#live-demo">Live Demo</a></li>
+    <li>Tested different machine learning models (Logistic Regression, Decision Trees, etc.) on the preprocessed dataset.</li>
+    <li>Compared performance metrics such as accuracy, precision, recall, and F1-score to select the best-performing model for fraud detection.</li>
+    <li>Selected Logistic Regression as the final model for further refinement and deployment.</li>
 </ul>
 
-<h2 id="introduction">Introduction</h2>
-<p>Credit card fraud is a serious issue affecting financial institutions and individuals globally. This project leverages a machine learning-based approach to detect fraudulent transactions. By employing a Logistic Regression classifier, the model aims to identify fraudulent activities based on transaction data.</p>
+<h3>Logistic Regression Model Training</h3>
+<p>The Logistic Regression model was trained on the balanced dataset and evaluated using various metrics like accuracy and F1-score. This model was saved as <code>final_model.pkl</code> for deployment purposes.</p>
 
-<h2 id="dataset">Dataset</h2>
-<p>The dataset used in this project is the <strong>Credit Card Fraud Detection</strong> dataset from Kaggle, which contains European cardholder transactions from September 2013. It comprises 284,807 transactions over two days, of which only 492 are frauds, making the dataset highly imbalanced. Fraudulent transactions account for only 0.172% of the total.</p>
-<p><strong>Dataset link:</strong> <a href="https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud" download>Credit Card Fraud Detection Dataset</a></p>
+<h3>Streamlit Application</h3>
+<ul>
+    <li>Developed a web application using Streamlit to provide an interactive interface for fraud detection.</li>
+    <li>Allows users to input transaction details and view real-time predictions of whether the transaction is fraudulent or legitimate.</li>
+    <li>Displays fraud detection probabilities for better understanding of model confidence.</li>
+</ul>
 
-<h2 id="installation">Installation</h2>
-<p>To run this project, follow these steps:</p>
-<pre><code>git clone https://github.com/abhishek-2k2/credit-card-fraud-detection.git
-cd credit-card-fraud-detection
-pip install -r requirements.txt
-</code></pre>
+<h3>Error Handling</h3>
+<ul>
+    <li>Handled cases where the model or the preprocessed dataset fails to load with appropriate error messages.</li>
+    <li>Validated transaction inputs to ensure they are properly formatted.</li>
+    <li>Provided user-friendly error messages if inputs are incorrect or other issues arise during prediction.</li>
+</ul>
 
-<h2 id="results">Results</h2>
-<p>The Logistic Regression model achieved an accuracy score of <code>93%</code> on the test dataset. This result demonstrates the model's effectiveness in distinguishing between legitimate and fraudulent credit card transactions.</p>
+<h2>Error Handling and Messages</h2>
+<ul>
+    <li>If the model or dataset fails to load, the app displays an appropriate error message and stops further execution.</li>
+    <li>If the input transaction data is incomplete or incorrect, the user is prompted to correct the data.</li>
+    <li>Any other errors during prediction are caught and presented to the user, ensuring a seamless experience.</li>
+</ul>
 
-<h2 id="contributing">Contributing</h2>
-<p>Contributions are welcome! If you would like to contribute to this project, feel free to submit a Pull Request.</p>
+<h2>Conclusion</h2>
+<p>This project demonstrates the application of machine learning for credit card fraud detection. By leveraging a Logistic Regression model and an easy-to-use Streamlit interface, users can quickly predict whether a transaction is fraudulent. The use of effective data preprocessing and robust error handling ensures the reliability and accuracy of the system.</p>
 
-<h2 id="live-demo">Live Demo</h2>
+<h2>Live Demo</h2>
 <p>You can check the deployed version of the project on Streamlit using the following link:</p>
 <p><a href="https://codtech-task-1-nivfxnyn4vpcmsssp8jylq.streamlit.app/" target="_blank">Live Demo</a></p>
 
